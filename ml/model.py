@@ -71,7 +71,9 @@ def inference(model, X):
         Predictions from the model.
     """
     # TODO: implement the function
-    pass
+    preds = model.predict(X)
+
+    return preds
 
 def save_model(model, path):
     """ Serializes model to a file.
@@ -84,12 +86,14 @@ def save_model(model, path):
         Path to save pickle file.
     """
     # TODO: implement the function
-    pass
+    with open(path, "wb") as f:
+        pickle.dump(model, f)
 
 def load_model(path):
     """ Loads pickle file from `path` and returns it."""
     # TODO: implement the function
-    pass
+    with open(path, "rb") as f:
+        model = pickle.load(f)
 
 
 def performance_on_categorical_slice(
@@ -133,7 +137,13 @@ def performance_on_categorical_slice(
         # your code here
         # for input data, use data in column given as "column_name", with the slice_value 
         # use training = False
+        data,
+        categorical_features=categorical_features,
+        label=label
+        training=False
+        encoder=encoder
+        lb=lb
     )
-    preds = None # your code here to get prediction on X_slice using the inference function
+    preds = inference(model, X_slice)# your code here to get prediction on X_slice using the inference function
     precision, recall, fbeta = compute_model_metrics(y_slice, preds)
     return precision, recall, fbeta
