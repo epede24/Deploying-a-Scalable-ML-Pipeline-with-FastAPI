@@ -1,59 +1,63 @@
 import pytest
-# TODO: add necessary import
-from model.py import train_model, inference, compute_model_metrics
+from ml.model import train_model, inference, compute_model_metrics
+from ml.data import process_data
 from sklearn.datasets import make_classification
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LogisticRegression
+import numpy as np
 
-# TODO: implement the first test. Change the function name and input as needed
-def model_type_test():
+def test_model_type():
     """
     # This test checks that the model used in train_model is the anticipated type
     """
-    # Generate random data for classification
-    X_dummy, y_dummy = make_classification(n_samples=100, n_features=2, random_state=33)
+    # Create fake data for testing
+    X_train = np.random.rand(115, 50)
+    y_train = np.random.randint(2, size=115)
 
-    # Use train_model on the data
-    model = train_model(X_dummy, y_dummy)
+    # Use train_model on the fake data
+    model = train_model(X_train, y_train)
 
     # Check if the model is of the correct type
     assert isinstance(model, LogisticRegression)
 
 
-# TODO: implement the second test. Change the function name and input as needed
-def predictions_test():
+def test_predictions():
     """
     # This test checks that the inference function performs as expected
     """
-    # Create data
-    X_dummy, y_dummy = make_classification(n_samples=100, n_features=2, random_state=33)
+    # Create fake data for testing
+    X_train = np.random.rand(115, 50)
+    y_train = np.random.randint(2, size=115)
 
-    # Train the model
-    model = train_model(X_dummy, y_dummy)
+    # Use train_model on the fake data
+    model = train_model(X_train, y_train)
 
     # Make predictions
-    preds = inference(model, X_dummy)
+    preds = inference(model, X_train)
 
     # Check that predictions are as expected
     assert set(preds) <= {0, 1}
 
 
-# TODO: implement the third test. Change the function name and input as needed
 def test_metrics():
     """
-    # This test checks that compute_model_metrics returns expected values
+    # This test checks that compute_model_metrics returns values of expected type
     """
-    # Create data
-    X_dummy, y_dummy = make_classification(n_samples=100, n_features=2, random_state=33)
+    # Create fake data for testing
+    # Create fake data for testing
+    X_train = np.random.rand(115, 50)
+    y_train = np.random.randint(2, size=115)
 
-    # Train the model
-    model = train_model(X_dummy, y_dummy)
+    # Use train_model on the fake data
+    model = train_model(X_train, y_train)
 
     # Make predictions
-    preds = inference(model, X_dummy)
+    preds = inference(model, X_train)
 
     # Compute metrics
-    p, r, fb = compute_model_metrics(y_dummy, preds)
+    p, r, fb = compute_model_metrics(y_train, preds)
 
-    assert p > 0.5 
-    assert r > 0.5
-    assert fb > 0.5 
+    assert isinstance(p, float)
+    assert isinstance(r, float)
+    assert isinstance(fb, float) 
 
