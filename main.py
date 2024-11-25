@@ -29,7 +29,7 @@ class Data(BaseModel):
 path = "/home/emmaep/Deploying-a-Scalable-ML-Pipeline-with-FastAPI/model/encoder.pkl" # TODO: enter the path for the saved encoder 
 encoder = load_model(path)
 
-path = "/home/emmaep/Deploying-a-Scalable-ML-Pipeline-with-FastAPI/model/encoder.pkl" # TODO: enter the path for the saved model 
+path = "/home/emmaep/Deploying-a-Scalable-ML-Pipeline-with-FastAPI/model/model.pkl" # TODO: enter the path for the saved model 
 model = load_model(path)
 
 # TODO: create a RESTful API using FastAPI
