@@ -1,14 +1,12 @@
-import pytest
 from ml.model import train_model, inference, compute_model_metrics
-from ml.data import process_data
-from sklearn.datasets import make_classification
-from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
 import numpy as np
 
+
 def test_model_type():
     """
-    # This test checks that the model used in train_model is the anticipated type
+    This test checks that the model
+    used in train_model is the anticipated type
     """
     # Create fake data for testing
     X_train = np.random.rand(115, 50)
@@ -23,7 +21,7 @@ def test_model_type():
 
 def test_predictions():
     """
-    # This test checks that the inference function performs as expected
+    This test checks that the inference function performs as expected
     """
     # Create fake data for testing
     X_train = np.random.rand(115, 50)
@@ -41,7 +39,8 @@ def test_predictions():
 
 def test_metrics():
     """
-    # This test checks that compute_model_metrics returns values of expected type
+    This test checks that compute_model_metrics 
+    returns values of expected type
     """
     # Create fake data for testing
     # Create fake data for testing
@@ -59,5 +58,4 @@ def test_metrics():
 
     assert isinstance(p, float)
     assert isinstance(r, float)
-    assert isinstance(fb, float) 
-
+    assert isinstance(fb, float)
