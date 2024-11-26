@@ -106,8 +106,8 @@ def performance_on_categorical_slice(
     categorical_features, label, encoder, lb, model
 ):
     """ Computes the model metrics on a slice of the data specified by a
-    column name and processes the data using one hot encoding for the 
-    categorical features and a label binarizer for the labels. 
+    column name and processes the data using one hot encoding for the
+    categorical features and a label binarizer for the labels.
     This can be used in either training or
     inference/validation.
 

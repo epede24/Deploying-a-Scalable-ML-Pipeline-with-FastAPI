@@ -39,7 +39,7 @@ def test_predictions():
 
 def test_metrics():
     """
-    This test checks that compute_model_metrics 
+    This test checks that compute_model_metrics
     returns values of expected type
     """
     # Create fake data for testing
