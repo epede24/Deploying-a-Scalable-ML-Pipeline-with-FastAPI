@@ -4,6 +4,7 @@ from ml.data import process_data
 from sklearn.model_selection import GridSearchCV
 from sklearn.linear_model import LogisticRegression
 
+
 def train_model(X_train, y_train):
     """
     Trains a machine learning model and returns it.
@@ -37,9 +38,11 @@ def train_model(X_train, y_train):
     # Get and return the best-performing model
     return grid_search.best_estimator_
 
+
 def compute_model_metrics(y, preds):
     """
-    Validates the trained machine learning model using precision, recall, and F1.
+    Validates the trained machine learning model using precision,
+    recall, and F1.
 
     Inputs
     ------
@@ -77,6 +80,7 @@ def inference(model, X):
 
     return preds
 
+
 def save_model(model, path):
     """ Serializes model to a file.
 
@@ -90,6 +94,7 @@ def save_model(model, path):
     with open(path, "wb") as f:
         pickle.dump(model, f)
 
+
 def load_model(path):
     """ Loads pickle file from `path` and returns it."""
     with open(path, "rb") as f:
@@ -98,18 +103,20 @@ def load_model(path):
 
 
 def performance_on_categorical_slice(
-    data, column_name, slice_value, categorical_features, label, encoder, lb, model
+    data, column_name, slice_value, 
+    categorical_features, label, encoder, lb, model
 ):
-    """ Computes the model metrics on a slice of the data specified by a column name and
-
-    Processes the data using one hot encoding for the categorical features and a
-    label binarizer for the labels. This can be used in either training or
+    """ Computes the model metrics on a slice of the data specified by a
+    column name and processes the data using one hot encoding for the 
+    categorical features and a label binarizer for the labels. 
+    This can be used in either training or
     inference/validation.
 
     Inputs
     ------
     data : pd.DataFrame
-        Dataframe containing the features and label. Columns in `categorical_features`
+        Dataframe containing the features and label. 
+        Columns in `categorical_features`
     column_name : str
         Column containing the sliced feature.
     slice_value : str, int, float
@@ -117,7 +124,8 @@ def performance_on_categorical_slice(
     categorical_features: list
         List containing the names of the categorical features (default=[])
     label : str
-        Name of the label column in `X`. If None, then an empty array will be returned
+        Name of the label column in `X`. 
+        If None, then an empty array will be returned
         for y (default=None)
     encoder : sklearn.preprocessing._encoders.OneHotEncoder
         Trained sklearn OneHotEncoder, only used if training=False.
